@@ -1,0 +1,81 @@
+
+Keywords:
+Given -> precondition or initial context
+When -> Event or trigger
+Then -> expected output
+Background -> define all the common steps used in all the test present in the feature file 
+Tags -> tags are used to run specific test cases. for e.g. @Smoke -> all the test cases with @Smoke tag will run when this tag is passed in Runner class
+
+tags="@Sanity" // Will Run Scenario which is tagged with Sanity. Does not matter if it has other tags as well
+tags="@Sanity or @Regression" // Will Run Scenario tagged with Sanity or Regression
+tags="@Sanity and @Regression" // Will Run Scenario which is tagged with Sanity as well as Regression
+tags="@Sanity and not @Regression" // Will Run Scenario which is tagged with Sanity but not Regression
+
+Base class -> all the common methods we write in base class
+
+Hooks -> Hooks are block of code that runs before and after each scenario
+
+1. Scenario hooks : runs before/after each scenario.
+@Before Annotation  //steps to perform before start of testing of each scenario
+
+Setup code:
+   To start the web driver
+   Set up of Data Base connections
+   Set up of test data
+   Set up of browser cookies
+   Navigation to a certain page
+   
+ @After Annotation  //steps to perform after testing of each scenario
+ 
+ Cleanup code / teardown code:
+   To stop the web driver
+   To close the DB connections
+   To clear the test data
+   To clear browser cookies
+   To Log out from the application
+   Printing reports or logs
+   Taking the screenshots of error
+   
+2. Step hooks: runs before / after each steps.
+
+3. Conditional hooks: We can associate hooks with tags for conditional execution.
+
+Note -> If there are two @Before Annotation methods and we provide them an order value, then the method with @Before Annotation having lower order value will be executed first.
+And in case of @After annotation method having higher order value will be executed first.
+
+Configuration.properties -> We create Configuration.properties file (also known as config.properties file sometimes) to externalize test configuration data instead of hardcording it inside Java classes. All the variables we will writing inside it in Key-value pair
+e.g - browser=chrome
+
+
+----> To run test cases using pom.xml add maven surefire plugin in pom.xml and give the path of Runner file in it inside includes tag. Now right click in pom.xml and click on Maven Test
+----> To run test cases using pom.xml outside eclipse we need to install Maven in our system. Open command prompt, change directory to Project path and enter command -> mvn test. Your test will start executing.
+----> To run test cases using Batch file, create a Windows batch file where ever your project is present -> open file and change directory to Project path and enter command -> mvn test inside the file and save it. Now double click on the Batch file that is newly created, your test will start executing.
+
+---------------------Setting up pipeline in Jenkins---------------------------
+Click on New Item
+Enter item Name
+Select Free Style project -> click on Ok button
+In General tab you can enter project description
+Then in Build Triggers tab -> Go to Build section -> Click on Add build step -> Select execute Windows batch command -> enter the command for that first we have to move to project directory where windows batch file is present (copy the batch file path) -> and in command enter
+cd C:\Users\prach\Desktop\CodeStudio
+Run.bat
+Then apply and save
+To build the project -> either you can click on Build Now option present in the project or in Dashboard you can select your Project dropdown -> Build Now
+Once project Buidl is completed you will see a tick in your project, you can open the project to check the log -> click on Console output
+
+
+------How to execute Maven project in Jenkins--------
+Dashboard -> Manage Jenkins -> Manage Plugins -> Available -> Search Maven ->Select Maven Integration -> Click on Install Without restart
+Again click on Manage Jenkins -> Global Tool Configuration -> Add jdk -> Give name and give path of JAVA_HOME 
+In Maven Installation -> Give  Maven name and give of MAVEN_HOME path
+Click on Apply and Save
+
+Now on go to Dashboard -> New Item -> Enter Name -> Select Maven project -> Select Ok
+In general you can add description 
+In Build secton Give the complete path of pom.xml in Root POM ->  C:\Users\Dell\eclipse-workspace\BDDUIFramework\pom.xml
+In Goals and options? -> Enter command -> clean test -> click on Apply and Save
+Now you can build the project
+To build the project -> either you can click on Build Now option present in the project or in Dashboard you can select your Project dropdown -> Build Now
+Once project Buidl is completed you will see a tick in your project, you can open the project to check the log -> click on Console output
+ 
+   

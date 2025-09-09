@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        
+        <!-- Report Theme -->
+        <theme>standard</theme>
+        
+        <!-- Document Title -->
+        <documentTitle>BDD Test Automation Report</documentTitle>
+        
+        <!-- Report Name -->
+        <reportName>BDDUIFramework Execution Report</reportName>
+        
+        <!-- Encoding -->
+        <encoding>UTF-8</encoding>
+        
+        <!-- Chart Visibility -->
+        <chartVisibilityOnOpen>true</chartVisibilityOnOpen>
+        
+        <!-- Protocol -->
+        <protocol>https</protocol>
+        
+        <!-- CSS Customization -->
+        <css>
+            body {
+                font-family: Arial, sans-serif;
+            }
+        </css>
+        
+        <!-- JS Customization -->
+        <js>
+            document.addEventListener('DOMContentLoaded', function() {
+                console.log('Extent Report Loaded Successfully!');
+            });
+        </js>
+        
+    </configuration>
+</extentreports>
